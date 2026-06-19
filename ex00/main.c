@@ -27,15 +27,49 @@ int	check_arg(char *str)
 	return (1);
 }
 
+void	fill_tab(char *str, t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (j < 16)
+	{
+		data->nbrs[j] = str[i] - '0';
+		i += 2;
+		j++;
+	}
+}
+
+void	init_grid(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < 4)
+	{
+		j = 0;
+		while (j < 4)
+		{
+			data->grid[i][j] = 0;
+			j++;
+		}
+		i++;
+	}
+}
+
 int	main(int ac, char **av)
 {
-	// t_data	data;
+	t_data	data;
 
 	if (ac != 2 || !check_arg(av[1]))
 	{
 		write(2, "Error\n", 6);
 		return (1);
 	}
-
-	return	(0);
+	fill_tab(av[1], &data);
+	init_grid(&data);
+	return (0);
 }
