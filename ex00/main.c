@@ -1,51 +1,12 @@
 // add header
 
 #include "main.h"
-#include <stdio.h> // a supp
 
-int	check_arg(char *str)
+void	print_tab(t_data *data)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (i % 2 == 0)
-		{
-			if (str[i] < '1' || str[i] > '4')
-				return (0);
-		}
-		else
-		{
-			if (!(str[i] == ' '))
-				return (0);
-		}
-		i++;
-	}
-	if (i != 31)
-		return (0);
-	return (1);
-}
-
-void	fill_tab(char *str, t_data *data)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (j < 16)
-	{
-		data->nbrs[j] = str[i] - '0';
-		i += 2;
-		j++;
-	}
-}
-
-void	init_grid(t_data *data)
-{
-	int	i;
-	int	j;
+	char	c;
+	int		i;
+	int		j;
 
 	i = 0;
 	while (i < 4)
@@ -53,9 +14,13 @@ void	init_grid(t_data *data)
 		j = 0;
 		while (j < 4)
 		{
-			data->grid[i][j] = 0;
+			c = data->grid[i][j] + '0';
+			write(1, &c, 1);
+			if (j < 3)
+				write(1, " ", 1);
 			j++;
 		}
+		write(1, "\n", 1);
 		i++;
 	}
 }
@@ -71,5 +36,7 @@ int	main(int ac, char **av)
 	}
 	fill_tab(av[1], &data);
 	init_grid(&data);
+	// backtracking
+	print_tab(&data);
 	return (0);
 }

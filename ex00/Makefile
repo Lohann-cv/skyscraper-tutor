@@ -6,7 +6,7 @@ HEADER = main.h
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = main.c
+SRCS = main.c parsing.c
 
 OBJS = $(SRCS:.c=.o)
 
