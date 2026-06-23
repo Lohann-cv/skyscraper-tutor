@@ -1,6 +1,11 @@
 // add header
 
-#include "main.h"
+
+typedef struct s_data
+{
+	int	grid[4][4];
+	int	nbrs[16];
+}	t_data;
 
 int	check_arg(char *str)
 {

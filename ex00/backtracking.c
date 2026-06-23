@@ -1,6 +1,17 @@
 /* DONT FORGET 42 HEADER*/
 
-#include "utils.h"
+//#include "utils.h"
+
+typedef struct s_data
+{
+	int	grid[4][4];
+	int	nbrs[16];
+}	t_data;
+
+int    check_top(t_data *data, int j);
+int    check_bot(t_data *data, int j);
+int    check_right(t_data *data, int i);
+int    check_left(t_data *data, int i);
 
 static int    is_double(t_data *data, int i, int j)
 {
