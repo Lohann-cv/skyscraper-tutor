@@ -6,15 +6,9 @@
 /*   By: lcoant-- <lcoant--@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/23 06:30:36 by lcoant--          #+#    #+#             */
-/*   Updated: 2026/06/23 06:32:12 by lcoant--         ###   ########.fr       */
+/*   Updated: 2026/06/23 07:02:46 by lcoant--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-typedef struct s_data
-{
-	int	grid[4][4];
-	int	nbrs[16];
-}	t_data;
 
 int	check_arg(char *str)
 {

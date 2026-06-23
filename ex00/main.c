@@ -6,26 +6,19 @@
 /*   By: lcoant-- <lcoant--@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/23 06:30:11 by lcoant--          #+#    #+#             */
-/*   Updated: 2026/06/23 06:35:36 by lcoant--         ###   ########.fr       */
+/*   Updated: 2026/06/23 07:02:13 by lcoant--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-/* --- STRUCT --- */
-typedef struct s_data
-{
-	int	grid[4][4];
-	int	nbrs[16];
-}	t_data;
-
 /* --- PROTOTYPE --- */
 int		check_arg(char *str);
+int		backtracking(int grid[4][4], int nbrs[16], int i, int j);
 void	fill_tab(char *str, int nbrs[16]);
 void	init_grid(int grid[4][4]);
-int     backtracking(int grid[4][4],int nbrs[16], int i, int j);
 
-static void    print_tab(int grid[4][4])
+static void	print_tab(int grid[4][4])
 {
 	char	c;
 	int		i;
@@ -48,15 +41,15 @@ static void    print_tab(int grid[4][4])
 	}
 }
 
-static void    print_error(void)
+static void	print_error(void)
 {
 	write(2, "Error\n", 6);
 }
 
 int	main(int ac, char **av)
 {
-	int    grid[4][4];
-	int    nbrs[16];
+	int	grid[4][4];
+	int	nbrs[16];
 
 	if (ac != 2 || !check_arg(av[1]))
 	{
@@ -67,8 +60,8 @@ int	main(int ac, char **av)
 	init_grid(grid);
 	if (backtracking(grid, nbrs, 0, 0))
 	{
-        print_tab(grid);
-	    return (0);
+		print_tab(grid);
+		return (0);
 	}
 	print_error();
 	return (1);
