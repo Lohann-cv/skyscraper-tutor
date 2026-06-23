@@ -36,13 +36,18 @@ static void    print_tab(t_data *data)
 	}
 }
 
+static void    print_error(void)
+{
+	write(2, "Error\n", 6);
+}
+
 int	main(int ac, char **av)
 {
 	t_data	data;
 
 	if (ac != 2 || !check_arg(av[1]))
 	{
-		write(2, "Error\n", 6);
+		print_error();
 		return (1);
 	}
 	fill_tab(av[1], &data);
@@ -52,6 +57,6 @@ int	main(int ac, char **av)
         print_tab(&data);
 	    return (0);
 	}
-	write(2, "Error\n", 6);
+	print_error();
 	return (1);
 }
