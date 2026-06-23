@@ -2,7 +2,7 @@
 
 #include "main.h"
 
-void	print_tab(t_data *data)
+static void    print_tab(t_data *data)
 {
 	char	c;
 	int		i;
@@ -36,7 +36,7 @@ int	main(int ac, char **av)
 	}
 	fill_tab(av[1], &data);
 	init_grid(&data);
-	// backtracking
+	backtracking(&data, 0, 0, 0);
 	print_tab(&data);
 	return (0);
 }

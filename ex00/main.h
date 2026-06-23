@@ -15,5 +15,6 @@ typedef struct s_data
 int		check_arg(char *str);
 void	fill_tab(char *str, t_data *data);
 void	init_grid(t_data *data);
+int     backtracking(t_data *data, int tracking, int i, int j);
 
 #endif
