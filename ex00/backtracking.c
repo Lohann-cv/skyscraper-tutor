@@ -18,12 +18,12 @@ typedef struct s_data
 }	t_data;
 
 /* --- PROTOTYPE --- */
-int    check_top(t_data *data, int j);
-int    check_bot(t_data *data, int j);
-int    check_right(t_data *data, int i);
-int    check_left(t_data *data, int i);
+int    check_top(int grid[4][4], int nbrs[16], int j);
+int    check_bot(int grid[4][4], int nbrs[16], int j);
+int    check_right(int grid[4][4], int nbrs[16], int i);
+int    check_left(int grid[4][4], int nbrs[16], int i);
 
-static int    is_double(t_data *data, int i, int j)
+static int    is_double(int grid[4][4], int i, int j)
 {
 	int    k;
 
@@ -32,12 +32,12 @@ static int    is_double(t_data *data, int i, int j)
 	{
 		if (k != i)
 		{
-            if (data->grid[i][j] == data->grid[k][j])
+            if (grid[i][j] == grid[k][j])
 				return 1;
 		}
 		if (k != j)
 		{
-            if (data->grid[i][j] == data->grid[i][k])
+            if (grid[i][j] == grid[i][k])
 				return 1;
 		}
 		k++;
@@ -45,29 +45,29 @@ static int    is_double(t_data *data, int i, int j)
 	return 0;
 }
 
-static int    checker(t_data *data, int i, int j)
+static int    checker(int grid[4][4], int nbrs[16], int i, int j)
 {
-	if (is_double(data, i, j))
+	if (is_double(grid, i, j))
 		return 0;
 	if (i == 3)
 	{
-        if (!check_top(data, j) || !check_bot(data, j))
+        if (!check_top(grid, nbrs, j) || !check_bot(grid, nbrs, j))
 			return 0;
 	}
 	if (j == 3)
 	{
-	    if (!check_right(data, i) || !check_left(data, i))
+	    if (!check_right(grid, nbrs, i) || !check_left(grid, nbrs, i))
 			return 0;
 	}	
     return 1;
 }
 
-int    backtracking(t_data *data, int tracking, int i, int j)
+int    backtracking(int grid[4][4], int nbrs[16], int i, int j)
 {
 	int    number;
 
 	number = 1;
-	if (tracking == 16)
+	if (j == 4 && i == 3)
 		return 1;
 	if (j > 3)
 	{
@@ -76,13 +76,13 @@ int    backtracking(t_data *data, int tracking, int i, int j)
 	}
 	while (number <= 4)
 	{
-		data->grid[i][j] = number;
-        if (checker(data, i, j))
+		grid[i][j] = number;
+        if (checker(grid, nbrs, i, j))
 		{
-			if (backtracking(data, tracking + 1, i, j + 1) == 1)
+			if (backtracking(grid, nbrs, i, j + 1) == 1)
 				return 1;
 		}
-		data->grid[i][j] = 0;
+		grid[i][j] = 0;
 		number++;
 	}
 	return 0;

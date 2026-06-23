@@ -21,11 +21,11 @@ typedef struct s_data
 
 /* --- PROTOTYPE --- */
 int		check_arg(char *str);
-void	fill_tab(char *str, t_data *data);
-void	init_grid(t_data *data);
-int     backtracking(t_data *data, int tracking, int i, int j);
+void	fill_tab(char *str, int nbrs[16]);
+void	init_grid(int grid[4][4]);
+int     backtracking(int grid[4][4],int nbrs[16], int i, int j);
 
-static void    print_tab(t_data *data)
+static void    print_tab(int grid[4][4])
 {
 	char	c;
 	int		i;
@@ -37,7 +37,7 @@ static void    print_tab(t_data *data)
 		j = 0;
 		while (j < 4)
 		{
-			c = data->grid[i][j] + '0';
+			c = grid[i][j] + '0';
 			write(1, &c, 1);
 			if (j < 3)
 				write(1, " ", 1);
@@ -55,18 +55,19 @@ static void    print_error(void)
 
 int	main(int ac, char **av)
 {
-	t_data	data;
+	int    grid[4][4];
+	int    nbrs[16];
 
 	if (ac != 2 || !check_arg(av[1]))
 	{
 		print_error();
 		return (1);
 	}
-	fill_tab(av[1], &data);
-	init_grid(&data);
-	if (backtracking(&data, 0, 0, 0))
+	fill_tab(av[1], nbrs);
+	init_grid(grid);
+	if (backtracking(grid, nbrs, 0, 0))
 	{
-        print_tab(&data);
+        print_tab(grid);
 	    return (0);
 	}
 	print_error();

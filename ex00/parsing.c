@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/* --- STRUCT --- */
 typedef struct s_data
 {
 	int	grid[4][4];
@@ -41,7 +40,7 @@ int	check_arg(char *str)
 	return (1);
 }
 
-void	fill_tab(char *str, t_data *data)
+void	fill_tab(char *str, int nbrs[16])
 {
 	int	i;
 	int	j;
@@ -50,13 +49,13 @@ void	fill_tab(char *str, t_data *data)
 	j = 0;
 	while (j < 16)
 	{
-		data->nbrs[j] = str[i] - '0';
+		nbrs[j] = str[i] - '0';
 		i += 2;
 		j++;
 	}
 }
 
-void	init_grid(t_data *data)
+void	init_grid(int grid[4][4])
 {
 	int	i;
 	int	j;
@@ -67,7 +66,7 @@ void	init_grid(t_data *data)
 		j = 0;
 		while (j < 4)
 		{
-			data->grid[i][j] = 0;
+			grid[i][j] = 0;
 			j++;
 		}
 		i++;

@@ -17,7 +17,7 @@ typedef struct s_data
 	int	nbrs[16];
 }	t_data;
 
-int    check_top(t_data *data, int j)
+int    check_top(int grid[4][4],int nbrs[16], int j)
 {
 	int    i;
 	int    seen;
@@ -28,19 +28,19 @@ int    check_top(t_data *data, int j)
     max = 0;
 	while (i < 4)
 	{
-        if (data->grid[i][j] > max)
+        if (grid[i][j] > max)
 		{
-            max = data->grid[i][j];
+            max = grid[i][j];
 			seen++;
 		}
 		i++;
 	}
-	if (seen == data->nbrs[j])
+	if (seen == nbrs[j])
 		return 1;
 	return 0;
 }
 
-int    check_bot(t_data *data, int j)
+int    check_bot(int grid[4][4],int nbrs[16], int j)
 {
 	int    i;
 	int    seen;
@@ -51,19 +51,19 @@ int    check_bot(t_data *data, int j)
     max = 0;
 	while (i >= 0)
 	{
-        if (data->grid[i][j] > max)
+        if (grid[i][j] > max)
 		{
-            max = data->grid[i][j];
+            max = grid[i][j];
 			seen++;
 		}
 		i--;
 	}
-	if (seen == data->nbrs[4 + j])
+	if (seen == nbrs[4 + j])
 		return 1;
 	return 0;
 }
 
-int    check_right(t_data *data, int i)
+int    check_right(int grid[4][4],int nbrs[16], int i)
 {
 	int    j;
 	int    seen;
@@ -74,19 +74,19 @@ int    check_right(t_data *data, int i)
 	max = 0;
 	while (j >= 0)
 	{
-		if (data->grid[i][j] > max)
+		if (grid[i][j] > max)
 		{
-			max = data->grid[i][j];
+			max = grid[i][j];
 			seen++;
 		}
 		j--;
 	}
-	if (seen == data->nbrs[12 + i])
+	if (seen == nbrs[12 + i])
 		return 1;
 	return 0;
 }
 
-int    check_left(t_data *data, int i)
+int    check_left(int grid[4][4],int nbrs[16], int i)
 {
 	int    j;
 	int    seen;
@@ -97,14 +97,14 @@ int    check_left(t_data *data, int i)
 	max = 0;
 	while (j < 4)
 	{
-		if (data->grid[i][j] > max)
+		if (grid[i][j] > max)
 		{
-			max = data->grid[i][j];
+			max = grid[i][j];
 			seen++;
 		}
 		j++;
 	}
-	if (seen == data->nbrs[8 + i])
+	if (seen == nbrs[8 + i])
 		return 1;
 	return 0;
 }
