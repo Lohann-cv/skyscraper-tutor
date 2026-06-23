@@ -36,7 +36,11 @@ int	main(int ac, char **av)
 	}
 	fill_tab(av[1], &data);
 	init_grid(&data);
-	backtracking(&data, 0, 0, 0);
-	print_tab(&data);
-	return (0);
+	if (backtracking(&data, 0, 0, 0))
+	{
+        print_tab(&data);
+	    return (0);
+	}
+	write(2, "Error\n", 6);
+	return (1);
 }
