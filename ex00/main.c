@@ -1,13 +1,25 @@
-// add header
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lcoant-- <lcoant--@learner.42.tech>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/23 06:30:11 by lcoant--          #+#    #+#             */
+/*   Updated: 2026/06/23 06:35:36 by lcoant--         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-# include <unistd.h>
+#include <unistd.h>
 
+/* --- STRUCT --- */
 typedef struct s_data
 {
 	int	grid[4][4];
 	int	nbrs[16];
 }	t_data;
 
+/* --- PROTOTYPE --- */
 int		check_arg(char *str);
 void	fill_tab(char *str, t_data *data);
 void	init_grid(t_data *data);

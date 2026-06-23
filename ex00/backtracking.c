@@ -1,13 +1,23 @@
-/* DONT FORGET 42 HEADER*/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   backtracking.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lcoant-- <lcoant--@learner.42.tech>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/23 06:30:45 by lcoant--          #+#    #+#             */
+/*   Updated: 2026/06/23 06:33:04 by lcoant--         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-//#include "utils.h"
-
+/* --- STRUCT --- */
 typedef struct s_data
 {
 	int	grid[4][4];
 	int	nbrs[16];
 }	t_data;
 
+/* --- PROTOTYPE --- */
 int    check_top(t_data *data, int j);
 int    check_bot(t_data *data, int j);
 int    check_right(t_data *data, int i);
